@@ -6,3 +6,7 @@ h1 {
     font-family: 'Roboto Mono', monospace;
     color: white;
 }
+
+figure {
+    display: inline-block;
+}
