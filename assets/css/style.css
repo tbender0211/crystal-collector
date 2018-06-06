@@ -5,8 +5,42 @@ body {
 h1 {
     font-family: 'Roboto Mono', monospace;
     color: white;
+    text-align: end;
+    margin-right: 200px;
 }
 
 figure {
     display: inline-block;
+    padding:20px;
+    background-color: white;
+    margin: 10px;
+    border: solid 5px green;
+}
+
+.figure-caption {
+    color: black;
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+}
+
+#enemies {
+    margin-bottom:200px;
+}
+
+#attack { 
+    font-family: 'Roboto Mono', monospace;
+}
+
+img {
+    border: solid 2px black;
+}
+
+#combat-log {
+    color: white;
+    font-family: 'Roboto Mono', monospace;
 }

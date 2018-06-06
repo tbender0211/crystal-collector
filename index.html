@@ -5,35 +5,67 @@
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
+
         <h1>Star Wars RPG!</h1>
-        <figure class="figure">
 
-            <img src="assets/images/boba.jpg" class="figure-img img-fluid" alt="Boba Fett" id="boba">
-            <figcaption class="figure-caption"></figcaption>
+        <figure class="figure" id="boba">
 
-        </figure>
-        <figure class="figure">
-
-            <img src="assets/images/chewie.jpg" class="figure-img img-fluid" alt="Chewbacca" id="chewie">
-            <figcaption class="figure-caption"></figcaption>
+            <figcaption class="figure-caption">Boba Fett</figcaption>
+            <img src="assets/images/boba.jpg" class="figure-img img-fluid" alt="Boba Fett">
+            <figcaption class="figure-caption" id="boba-health">130</figcaption>
 
         </figure>
 
-            <figure class="figure">
+        <figure class="figure" id="chewie">
 
-                <img src="assets/images/vader.jpg" class="figure-img img-fluid" alt="Darth Vader" id="vader">
-                <figcaption class="figure-caption"></figcaption>
-
-            </figure>
-
-            <figure class="figure">
-
-                <img src="assets/images/solo.jpg" class="figure-img img-fluid" alt="Han Solo" id="solo">
-                <figcaption class="figure-caption"></figcaption>
+            <figcaption class="figure-caption">Chewbacca</figcaption>
+            <img src="assets/images/chewie.jpg" class="figure-img img-fluid" alt="Chewbacca">
+            <figcaption class="figure-caption" id="chewie-health">110</figcaption>
 
         </figure>
+
+        <figure class="figure" id="vader">
+
+            <figcaption class="figure-caption">Darth Vader</figcaption>
+            <img src="assets/images/vader.jpg" class="figure-img img-fluid" alt="Darth Vader">
+            <figcaption class="figure-caption" id="vader-health">150</figcaption>
+
+        </figure>
+
+        <figure class="figure" id="solo">
+
+            <figcaption class="figure-caption">Han Solo</figcaption>
+            <img src="assets/images/solo.jpg" class="figure-img img-fluid" alt="Han Solo">
+            <figcaption class="figure-caption" id="solo-health">120</figcaption>
+
+        </figure>
+        
+        <h2>Your Character</h2>
+
+        <div id="enemies">
+        </div>
+
+        
+        <h2>Enemies Available to Attack</h2>
+
+        <h2>Fight Section</h2>
+
+        <button type="button" id="attack">Attack</button>
+
+        <h2>Defender</h2>
+
+        <div id="defender">
+
+        </div>
+
+        <div id="combat-log"></div>
+
+        <script src="assets/javascript/game.js"></script>
+        
 
     </body>
+
 </html>
