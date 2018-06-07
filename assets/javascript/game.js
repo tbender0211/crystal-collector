@@ -2,17 +2,36 @@ $(document).ready(function(){
 
     var clicks = 0;
 
-    var bobaHealth = 130;
-    var chewieHealth = 110;
-    var vaderHealth = 150;
-    var soloHealth = 120;
+    // var bobaHealth = 130;
+    // var chewieHealth = 110;
+    // var vaderHealth = 150;
+    // var soloHealth = 120;
 
-    var bobaAttack = 10;
-    var chewieAttack = 6;
-    var vaderAttack = 12;
-    var soloAttack = 8;
-
-
+    // var bobaAttack = 10;
+    // var chewieAttack = 6;
+    // var vaderAttack = 12;
+    // var soloAttack = 8;
+    
+    var character=[
+        boba={  health: 130,
+                name: "Boba Fett",
+                attack: 10,
+                divId:"#boba",
+    },
+        chewie={health: 110,
+                name: "Chewbacca",
+                attack: 6,
+                divId: "#chewie",
+    },
+        vader={ health: 150,
+                name: "Darth Vader",
+                attack: 12,
+                divId: "#vader",},
+        solo={  health: 120,
+                name: "Han Solo",
+                attack: 8,
+                divId: "#solo",}
+    ];
 
     //Click function for Boba Fett
 
@@ -41,7 +60,7 @@ $(document).ready(function(){
             //Function to move selected enemy to defender div
 
             if (clicks === 1){
-
+            
                 $("#chewie").one("click", function(){
         
                     clicks++;
