@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
 
     
 
@@ -37,24 +37,23 @@ $(document).ready(function(){
     var defender = [];
     var yourChar;
     var yourEnemy;
-    var clicks = 0;
+    var characterChosen = false;
+    var enemyChosen = false;
 
     //Click function to choose character
 
 function chooseCharacter(){
 
 
-    $(".figure").one("click", function() {
-
-        clicks++;
-        console.log(clicks);
+    $(".figure").on("click", function() {
 
         yourChar = $(this);
-        yourChar.attr("class", "yourCharacter");
+        yourChar.removeClass("figure").addClass("yourCharacter");
 
         //Moves rest of characters to enemies div
         $(".figure").appendTo("#enemies");
-        $(".figure").attr("class", "enemy")
+        $(".figure").off("click");
+        $(".figure").removeClass("figure").addClass("enemy");
 
         //Removes empty space placeholder
         $(".enemy").css('margin-bottom', '10px');
@@ -62,9 +61,11 @@ function chooseCharacter(){
         //Changes border colors of enemies to red
         $(".enemy").css({'background-color': 'red', 'border-color': 'black'});
 
+        characterChosen = true;
+
         //Remove click function to prevent characters from moving back
 
-        $(".enemy").off("click");
+       
             
     })
 }
@@ -75,22 +76,44 @@ function chooseEnemy(){
 
     $(".enemy").on("click", function () {
 
-        clicks++;
-        console.log(clicks);
-
         yourEnemy = $(this);
-        yourEnemy.attr("class", "defender");
+        yourEnemy.removeClass(".enemy").addClass(".defender");
         $(".defender").appendTo("#defender");
-
+        enemyChosen = true;
     })
 }
 
-if (clicks === 0){
-    chooseCharacter();
-}else{
-    chooseEnemy();
-}
 
+$(document).ready(function(){
+
+    chooseCharacter();
+
+    if(characterChosen = true){
+        console.log(characterChosen);
+        chooseEnemy();
+        console.log(enemyChosen);
+   
+
+    if(($(".yourCharacter").attr("id")=="boba") && enemyChosen === true){
+
+        if(($(".defender").attr("id")=="chewie")){
+
+            $("#attack").on("click", function() {
+
+                $("#combat-log").html("<p>You attacked Chewbacca for " + boba.attack +".</p>");
+                $("#combat-log").append("<p>Chewbacca attacked you back for " + chewie.attack + ".</p>");
+                
+                boba.health = (boba.health - chewie.attack);
+                chewie.health = (chewie.health - boba.attack);
+                
+                $("#chewie-health").html(chewie.health);
+                $("#boba-health").html(boba.health);
+                
+                boba.attack = boba.attack*2;
+            })
+        }
+    }
+ }
 
 
             //Function to move selected enemy to defender div
