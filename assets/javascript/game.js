@@ -12,331 +12,335 @@ $(document).ready(function(){
     // var vaderAttack = 12;
     // var soloAttack = 8;
     
-    var character=[
-        boba={  health: 130,
+    var boba={  health: 130,
                 name: "Boba Fett",
                 attack: 10,
-                divId:"#boba",
-    },
-        chewie={health: 110,
+                divId:"#boba",};
+
+    var chewie={health: 110,
                 name: "Chewbacca",
                 attack: 6,
-                divId: "#chewie",
-    },
-        vader={ health: 150,
+                divId: "#chewie",};
+
+    var vader={ health: 150,
                 name: "Darth Vader",
                 attack: 12,
-                divId: "#vader",},
-        solo={  health: 120,
+                divId: "#vader",};
+
+    var solo={  health: 120,
                 name: "Han Solo",
                 attack: 8,
-                divId: "#solo",}
-    ];
+                divId: "#solo",};
+    
+    var characters = [boba, chewie, vader, solo];
+    var enemies = [];
+    var defender = [];
+    var yourChar;
 
     //Click function for Boba Fett
 
-    if (clicks === 0) {
+
+    function chooseCharacter() {
         
-        $("#boba").one("click", function() {
+        $(".figure").on("click", function() {
+        // $("#boba").one("click", function() {
+
+            
+            yourChar = $(this);
+            yourChar.attr("class", "yourCharacter");
 
             clicks++;
             console.log(clicks);
 
             //Moves rest of characters to enemies div
-            $("#chewie, #vader, #solo").appendTo("#enemies");
+            $(".figure").appendTo("#enemies");
 
             //Removes empty space placeholder
-            $("#enemies").css('margin-bottom', '10px');
+            $(".figure").css('margin-bottom', '10px');
 
             //Changes border colors of enemies to red
-            $("#chewie, #vader, #solo").css({'background-color': 'red', 'border-color': 'black'});
+            $(".figure").css({'background-color': 'red', 'border-color': 'black'});
 
             //Remove click function to prevent characters from moving back
-            $("#boba, #chewie, #vader, #solo").off("click");
+            $(".figure").off("click");
             
-        
-
+        })
+}
+chooseCharacter();
 
             //Function to move selected enemy to defender div
 
-            if (clicks === 1){
+//             if (clicks === 1){
             
-                $("#chewie").one("click", function(){
-        
-                    clicks++;
-                    console.log(clicks);
+//                 $("#chewie").one("click", function(){
 
-                    $("#chewie").appendTo("#defender");
-                    $("#chewie").css({'background-color': 'black', 'border-color': 'green'});
-                    $("#chewie .figure-caption").css('color', 'white');
+//                     $("#chewie").appendTo("#defender");
+//                     $("#chewie").css({'background-color': 'black', 'border-color': 'green'});
+//                     $("#chewie .figure-caption").css('color', 'white');
 
-                    $("#boba, #chewie, #vader, #solo").off("click");
+//                     $("#boba, #chewie, #vader, #solo").off("click");
 
-                    //Function Boba vs Chewie
-                    if (chewieHealth > 0 && bobaHealth > 0) {
+//                     //Function Boba vs Chewie
+//                     if (chewie.health > 0 && boba.health > 0 && $("#defender:contains('chewie')")) {
 
-                        $("#attack").on("click", function() {
+//                         $("#attack").on("click", function() {
 
-                            $("#combat-log").html("<p>You attacked Chewbacca for " + bobaAttack +".</p>");
-                            $("#combat-log").append("<p>Chewbacca attacked you back for " + chewieAttack + ".</p>");
+//                             $("#combat-log").html("<p>You attacked Chewbacca for " + boba.attack +".</p>");
+//                             $("#combat-log").append("<p>Chewbacca attacked you back for " + chewie.attack + ".</p>");
 
-                            bobaHealth = (bobaHealth - chewieAttack);
-                            chewieHealth = (chewieHealth - bobaAttack);
+//                             boba.health = (boba.health - chewie.attack);
+//                             chewie.health = (chewie.health - boba.attack);
 
-                            $("#chewie-health").html(chewieHealth);
-                            $("#boba-health").html(bobaHealth);
+//                             $("#chewie-health").html(chewie.health);
+//                             $("#boba-health").html(boba.health);
 
-                            bobaAttack = bobaAttack*2;
+//                             boba.attack = boba.attack*2;
                             
-                        if (bobaHealth <= 0) {
+//                         if (boba.health <= 0) {
 
-                            $("#combat-log").html("<p>You have been defeated." + "<p><button type='button' id='reset'>Reset</button></p>")
+//                             $("#combat-log").html("<p>You have been defeated." + "<p><button type='button' id='reset'>Reset</button></p>")
 
-                            $("#reset").on("click", function() {
-                                 location.reload();
-                            })
-                        }
+//                             $("#reset").on("click", function() {
+//                                  location.reload();
+//                             })
+//                         }
 
-                        if (chewieHealth <= 0) {
-                            $("#combat-log").html("You have defeated Chewbacca. You can choose to fight another enemy.")
-                            $("#chewie").hide();
-                        }
-                        })
-                    }
+//                         if (chewie.health <= 0 || vader.health <=0 || solo.health <=0) {
+//                             $("#combat-log").html("Victory! You can choose to fight another enemy.")
+//                             $("#chewie").hide();
+
+//                         }
+//                         })
+//                     }
          
                         
-                })
-                //Boba vs. Vader
-                $("#vader").one("click", function(){
+//                 })
+//                 //Boba vs. Vader
+//                 $("#vader").one("click", function(){
 
-                    clicks++;
-                    console.log(clicks);
+//                     clicks++;
+//                     console.log(clicks);
 
-                    $("#vader").appendTo("#defender");
-                    $("#vader").css({'background-color': 'black', 'border-color': 'green'});
-                    $("#vader .figure-caption").css('color', 'white');
+//                     $("#vader").appendTo("#defender");
+//                     $("#vader").css({'background-color': 'black', 'border-color': 'green'});
+//                     $("#vader .figure-caption").css('color', 'white');
 
-                    $("#boba, #chewie, #vader, #solo").off("click");
-                })
+//                     $("#boba, #chewie, #vader, #solo").off("click");
+//                 })
 
-                $("#solo").one("click", function(){
+//                 $("#solo").one("click", function(){
 
-                    clicks++;
-                    console.log(clicks);
+//                     clicks++;
+//                     console.log(clicks);
 
-                    $("#solo").appendTo("#defender");
-                    $("#solo").css({'background-color': 'black', 'border-color': 'green'});
-                    $("#solo .figure-caption").css('color', 'white');
+//                     $("#solo").appendTo("#defender");
+//                     $("#solo").css({'background-color': 'black', 'border-color': 'green'});
+//                     $("#solo .figure-caption").css('color', 'white');
 
-                    $("#boba, #chewie, #vader, #solo").off("click");
-                })
-            }
-        })
-    }
-    else {
+//                     $("#boba, #chewie, #vader, #solo").off("click");
+//                 })
+//             }
+//         })
 
-    }
+//     //Click function for Chewbacca
 
-    //Click function for Chewbacca
+//     if (clicks===0){
 
-    if (clicks===0){
+//         $("#chewie").one("click", function() {
 
-        $("#chewie").one("click", function() {
+//             clicks++;
+//             console.log(clicks);
 
-            clicks++;
-            console.log(clicks);
+//             $("#boba, #vader, #solo").appendTo("#enemies");
 
-            $("#boba, #vader, #solo").appendTo("#enemies");
+//             $("#enemies").css('margin-bottom', '10px');
 
-            $("#enemies").css('margin-bottom', '10px');
+//             $("#boba, #vader, #solo").css({'background-color': 'red', 'border-color': 'black'});
 
-            $("#boba, #vader, #solo").css({'background-color': 'red', 'border-color': 'black'});
-
-            $("#boba, #chewie, #vader, #solo").off("click");
+//             $("#boba, #chewie, #vader, #solo").off("click");
 
 
 
 
-            //Function to move selected enemy to defender div
+//             //Function to move selected enemy to defender div
 
-            if (clicks === 1){
+//             if (clicks === 1){
 
-                $("#boba").one("click", function(){
+//                 $("#boba").one("click", function(){
 
-                    clicks++;
-                    console.log(clicks);
+//                     clicks++;
+//                     console.log(clicks);
 
-                    $("#boba").appendTo("#defender");
-                    $("#boba").css({'background-color': 'black', 'border-color': 'green'});
-                    $("#boba .figure-caption").css('color', 'white');
+//                     $("#boba").appendTo("#defender");
+//                     $("#boba").css({'background-color': 'black', 'border-color': 'green'});
+//                     $("#boba .figure-caption").css('color', 'white');
 
-                    $("#boba, #chewie, #vader, #solo").off("click");
-                })
+//                     $("#boba, #chewie, #vader, #solo").off("click");
+//                 })
 
-                $("#vader").one("click", function(){
+//                 $("#vader").one("click", function(){
 
-                    clicks++;
-                    console.log(clicks);
+//                     clicks++;
+//                     console.log(clicks);
 
-                    $("#vader").appendTo("#defender");
-                    $("#vader").css({'background-color': 'black', 'border-color': 'green'});
-                    $("#vader .figure-caption").css('color', 'white');
+//                     $("#vader").appendTo("#defender");
+//                     $("#vader").css({'background-color': 'black', 'border-color': 'green'});
+//                     $("#vader .figure-caption").css('color', 'white');
 
-                    $("#boba, #chewie, #vader, #solo").off("click");
-                })
+//                     $("#boba, #chewie, #vader, #solo").off("click");
+//                 })
 
-                $("#solo").one("click", function(){
+//                 $("#solo").one("click", function(){
 
-                    clicks++;
-                    console.log(clicks);
+//                     clicks++;
+//                     console.log(clicks);
 
-                    $("#solo").appendTo("#defender");
-                    $("#solo").css({'background-color': 'black', 'border-color': 'green'});
-                    $("#solo .figure-caption").css('color', 'white');
+//                     $("#solo").appendTo("#defender");
+//                     $("#solo").css({'background-color': 'black', 'border-color': 'green'});
+//                     $("#solo .figure-caption").css('color', 'white');
 
-                    $("#boba, #chewie, #vader, #solo").off("click");
-                })
-            }
+//                     $("#boba, #chewie, #vader, #solo").off("click");
+//                 })
+//             }
         
-        })
-    }
-    else {
+//         })
+//     }
+//     else {
 
-    }
+//     }
 
-    //Click function for Darth Vader
+//     //Click function for Darth Vader
 
-    if (clicks === 0) {
+//     if (clicks === 0) {
        
-        $("#vader").one("click", function() {
+//         $("#vader").one("click", function() {
 
-            clicks++;
-            console.log(clicks);
+//             clicks++;
+//             console.log(clicks);
         
-            $("#boba, #chewie, #solo").appendTo("#enemies");
+//             $("#boba, #chewie, #solo").appendTo("#enemies");
         
-            $("#enemies").css('margin-bottom', '10px');
+//             $("#enemies").css('margin-bottom', '10px');
 
-            $("#chewie, #boba, #solo").css({'background-color': 'red', 'border-color': 'black'});
+//             $("#chewie, #boba, #solo").css({'background-color': 'red', 'border-color': 'black'});
 
-            $("#boba, #chewie, #vader, #solo").off("click");
-
-
+//             $("#boba, #chewie, #vader, #solo").off("click");
 
 
-            //Function to move selected enemy to defender div
 
-            if (clicks === 1){
 
-                $("#chewie").one("click", function(){
+//             //Function to move selected enemy to defender div
 
-                    clicks++;
-                    console.log(clicks);
+//             if (clicks === 1){
 
-                    $("#chewie").appendTo("#defender");
-                    $("#chewie").css({'background-color': 'black', 'border-color': 'green'});
-                    $("#chewie .figure-caption").css('color', 'white');
+//                 $("#chewie").one("click", function(){
 
-                    $("#boba, #chewie, #vader, #solo").off("click");
-                })
+//                     clicks++;
+//                     console.log(clicks);
 
-                $("#boba").one("click", function(){
+//                     $("#chewie").appendTo("#defender");
+//                     $("#chewie").css({'background-color': 'black', 'border-color': 'green'});
+//                     $("#chewie .figure-caption").css('color', 'white');
 
-                    clicks++;
-                    console.log(clicks);
+//                     $("#boba, #chewie, #vader, #solo").off("click");
+//                 })
 
-                    $("#boba").appendTo("#defender");
-                    $("#boba").css({'background-color': 'black', 'border-color': 'green'});
-                    $("#boba .figure-caption").css('color', 'white');
+//                 $("#boba").one("click", function(){
 
-                    $("#boba, #chewie, #vader, #solo").off("click");
-                })
+//                     clicks++;
+//                     console.log(clicks);
 
-                $("#solo").one("click", function(){
+//                     $("#boba").appendTo("#defender");
+//                     $("#boba").css({'background-color': 'black', 'border-color': 'green'});
+//                     $("#boba .figure-caption").css('color', 'white');
 
-                    clicks++;
-                    console.log(clicks);
+//                     $("#boba, #chewie, #vader, #solo").off("click");
+//                 })
 
-                    $("#solo").appendTo("#defender");
-                    $("#solo").css({'background-color': 'black', 'border-color': 'green'});
-                    $("#solo .figure-caption").css('color', 'white');
+//                 $("#solo").one("click", function(){
 
-                    $("#boba, #chewie, #vader, #solo").off("click");
-                })
-            }
+//                     clicks++;
+//                     console.log(clicks);
+
+//                     $("#solo").appendTo("#defender");
+//                     $("#solo").css({'background-color': 'black', 'border-color': 'green'});
+//                     $("#solo .figure-caption").css('color', 'white');
+
+//                     $("#boba, #chewie, #vader, #solo").off("click");
+//                 })
+//             }
         
-        })
-    }
-    else {
+//         })
+//     }
+//     else {
 
-    }
+//     }
 
-    //Click function for Han Solo
+//     //Click function for Han Solo
 
-    if (clicks ===0) {
+//     if (clicks ===0) {
         
-        $("#solo").one("click", function() {
+//         $("#solo").one("click", function() {
 
-            clicks++;
-            console.log(clicks);
+//             clicks++;
+//             console.log(clicks);
 
-            $("#boba, #chewie, #vader").appendTo("#enemies");
+//             $("#boba, #chewie, #vader").appendTo("#enemies");
 
-            $("#enemies").css('margin-bottom', '10px');
+//             $("#enemies").css('margin-bottom', '10px');
 
-            $("#chewie, #vader, #boba").css({'background-color': 'red', 'border-color': 'black'});
+//             $("#chewie, #vader, #boba").css({'background-color': 'red', 'border-color': 'black'});
         
-            $("#boba, #chewie, #vader, #solo").off("click");
+//             $("#boba, #chewie, #vader, #solo").off("click");
 
 
 
-            //Function to move selected enemy to defender div
+//             //Function to move selected enemy to defender div
 
-            if (clicks === 1){
+//             if (clicks === 1){
 
-                $("#chewie").one("click", function(){
+//                 $("#chewie").one("click", function(){
 
-                    clicks++;
-                    console.log(clicks);
+//                     clicks++;
+//                     console.log(clicks);
 
-                    $("#chewie").appendTo("#defender");
-                    $("#chewie").css({'background-color': 'black', 'border-color': 'green'});
-                    $("#chewie .figure-caption").css('color', 'white');
+//                     $("#chewie").appendTo("#defender");
+//                     $("#chewie").css({'background-color': 'black', 'border-color': 'green'});
+//                     $("#chewie .figure-caption").css('color', 'white');
 
-                    $("#boba, #chewie, #vader, #solo").off("click");
-                })
+//                     $("#boba, #chewie, #vader, #solo").off("click");
+//                 })
 
-                $("#vader").one("click", function(){
+//                 $("#vader").one("click", function(){
 
-                    clicks++;
-                    console.log(clicks);
+//                     clicks++;
+//                     console.log(clicks);
 
-                    $("#vader").appendTo("#defender");
-                    $("#vader").css({'background-color': 'black', 'border-color': 'green'});
-                    $("#vader .figure-caption").css('color', 'white');
+//                     $("#vader").appendTo("#defender");
+//                     $("#vader").css({'background-color': 'black', 'border-color': 'green'});
+//                     $("#vader .figure-caption").css('color', 'white');
 
-                    $("#boba, #chewie, #vader, #solo").off("click");
-                })
+//                     $("#boba, #chewie, #vader, #solo").off("click");
+//                 })
 
-                $("#boba").one("click", function(){
+//                 $("#boba").one("click", function(){
 
-                    clicks++;
-                    console.log(clicks);
+//                     clicks++;
+//                     console.log(clicks);
 
-                    $("#boba").appendTo("#defender");
-                    $("#boba").css({'background-color': 'black', 'border-color': 'green'});
-                    $("#boba .figure-caption").css('color', 'white');
+//                     $("#boba").appendTo("#defender");
+//                     $("#boba").css({'background-color': 'black', 'border-color': 'green'});
+//                     $("#boba .figure-caption").css('color', 'white');
 
-                    $("#boba, #chewie, #vader, #solo").off("click");
-                })
-            }
+//                     $("#boba, #chewie, #vader, #solo").off("click");
+//                 })
+//             }
 
-        })
-    }
-    else{
-    }
-
-
+//         })
+//     }
+//     else{
+//     }                        
+    
 
     
 })
