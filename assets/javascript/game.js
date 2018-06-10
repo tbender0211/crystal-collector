@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var clicks = 0;
+    
 
     // var bobaHealth = 130;
     // var chewieHealth = 110;
@@ -36,37 +36,62 @@ $(document).ready(function(){
     var enemies = [];
     var defender = [];
     var yourChar;
+    var yourEnemy;
+    var clicks = 0;
 
-    //Click function for Boba Fett
+    //Click function to choose character
+
+function chooseCharacter(){
 
 
-    function chooseCharacter() {
-        
-        $(".figure").on("click", function() {
-        // $("#boba").one("click", function() {
+    $(".figure").one("click", function() {
 
+        clicks++;
+        console.log(clicks);
+
+        yourChar = $(this);
+        yourChar.attr("class", "yourCharacter");
+
+        //Moves rest of characters to enemies div
+        $(".figure").appendTo("#enemies");
+        $(".figure").attr("class", "enemy")
+
+        //Removes empty space placeholder
+        $(".enemy").css('margin-bottom', '10px');
+
+        //Changes border colors of enemies to red
+        $(".enemy").css({'background-color': 'red', 'border-color': 'black'});
+
+        //Remove click function to prevent characters from moving back
+
+        $(".enemy").off("click");
             
-            yourChar = $(this);
-            yourChar.attr("class", "yourCharacter");
-
-            clicks++;
-            console.log(clicks);
-
-            //Moves rest of characters to enemies div
-            $(".figure").appendTo("#enemies");
-
-            //Removes empty space placeholder
-            $(".figure").css('margin-bottom', '10px');
-
-            //Changes border colors of enemies to red
-            $(".figure").css({'background-color': 'red', 'border-color': 'black'});
-
-            //Remove click function to prevent characters from moving back
-            $(".figure").off("click");
-            
-        })
+    })
 }
-chooseCharacter();
+
+//Function to choose opponent (not working)
+
+function chooseEnemy(){
+
+    $(".enemy").on("click", function () {
+
+        clicks++;
+        console.log(clicks);
+
+        yourEnemy = $(this);
+        yourEnemy.attr("class", "defender");
+        $(".defender").appendTo("#defender");
+
+    })
+}
+
+if (clicks === 0){
+    chooseCharacter();
+}else{
+    chooseEnemy();
+}
+
+
 
             //Function to move selected enemy to defender div
 
