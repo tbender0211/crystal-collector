@@ -1,6 +1,6 @@
 # unit-4-game
 
-#Crystal Collector Game:
+<h1>Crystal Collector Game:</h1>
 * This is a game where the user is given a number and must use four gems given random values in order to reach the number.
 * At the beginning of each round, a random number between 19 and 120 is generated and displayed on the page.
 * There are four images of gems displayed on the page and at the beginning of every round, each gem is assigned a random value between 1 and 12.
