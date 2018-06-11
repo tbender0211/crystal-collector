@@ -1,46 +1,65 @@
 body {
-    background-image: url("../images/deathstar.jpg");
+    background-image: url("../images/cave.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-h1 {
-    font-family: 'Roboto Mono', monospace;
-    color: white;
-    text-align: end;
-    margin-right: 200px;
-}
-
-figure {
-    display: inline-block;
-    padding:20px;
+.container {
     background-color: white;
-    margin: 10px;
-    border: solid 5px green;
+    height: 80%;
+    width: 75%;
+    margin-top: 50px;
+    opacity: .6;
+    padding: 40px;
+    border-radius: 25px;
 }
 
-.figure-caption {
-    color: black;
-    font-family: 'Roboto Mono', monospace;
+p {
+    margin: 15px;
+    font-weight: bold;
+    opacity: 1;
+    font-family: 'Arapey', serif;
+}
+
+h1{
+    text-align: center;
+    margin: 50px;
+    color: white;
+    opacity: .8;
+    font-family: 'Amatic SC', cursive;
+    font-size: 100px;
+}
+
+.img-fluid {
+    border: solid 2px grey;
+    margin-bottom: 10px;
+}
+
+#win-loss {
+    justify-content: left;
+    background-color: grey;
+    margin-bottom: 20px;
+    font-family: 'Arapey', serif;
+    font-size: 20px;
+}
+
+#random-number{
+    background-color: grey;
+    margin-bottom:20px;
+    border-right: solid 10px white;
+    font-size: 40px;
+    font-family: 'Arapey', serif;
+}
+
+#score {
+    background-color: grey;
+    margin-bottom:20px;
+    font-size: 35px;
+    font-family: 'Arapey', serif;
+    height: 10%;
     text-align: center;
 }
 
-h2 {
-    font-family: 'Roboto Mono', monospace;
-    color: white;
-}
-
-#enemies {
-    margin-bottom:200px;
-}
-
-#attack { 
-    font-family: 'Roboto Mono', monospace;
-}
-
-img {
-    border: solid 2px black;
-}
-
-#combat-log {
-    color: white;
-    font-family: 'Roboto Mono', monospace;
+#instructions{
+    font-size: 20px;
 }
